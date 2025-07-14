@@ -14,7 +14,11 @@ interface EntryViewProps extends ListItemProps {
   toggleShowEdit: () => void;
 }
 
-const dateFormatter = new Intl.DateTimeFormat("de-DE");
+const dateFormatter = new Intl.DateTimeFormat("de-DE", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
 
 export default function EntryView(props: EntryViewProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
