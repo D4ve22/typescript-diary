@@ -27,8 +27,15 @@ export default function KeywordsField(props: KeywordsFieldProps) {
       renderInput={(params) => (
         <TextField
           {...params}
-          placeholder="Add new keywords by pressing enter..."
+          placeholder="Type keyword and press Enter..."
           className="form-control"
+          // Prevents the submit of the form when user presses enter while in text field
+          // Implemented to prevent unintentional submit behavior, when user presses enter without entering keyword
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+            }
+          }}
         />
       )}
     />

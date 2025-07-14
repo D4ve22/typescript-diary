@@ -30,6 +30,7 @@ export default function EditView(props: EditViewProps) {
     const dateString = formData.get("date") as string;
     const [year, month, day] = dateString.split("-").map(Number);
     const date = new Date(year, month - 1, day);
+    date.setFullYear(year);
     const text = formData.get("text") as string;
     if (
       props.entry.update({
@@ -60,6 +61,7 @@ export default function EditView(props: EditViewProps) {
             <form className="row g-3" action={handleFormData}>
               <div className="col-6 d-flex align-items-center">
                 <button
+                  type="button"
                   className="btn btn-secondary card-link"
                   onClick={handleCancel}
                 >
@@ -67,10 +69,11 @@ export default function EditView(props: EditViewProps) {
                 </button>
               </div>
               <div className="col-6 text-end">
-                <button className="btn btn-primary card-link">
+                <button type="submit" className="btn btn-primary card-link">
                   <SaveIcon />
                 </button>
                 <button
+                  type="button"
                   className="btn btn-danger card-link"
                   onClick={handleDelete}
                 >
